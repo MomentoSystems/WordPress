@@ -87,7 +87,7 @@ class File_Upload_Upgrader {
 			// Schedule a cleanup for 2 hours from now in case of failed installation.
 			wp_schedule_single_event( time() + 2 * HOUR_IN_SECONDS, 'upgrader_scheduled_cleanup', array( $this->id ) );
 
-		} elseif ( is_numeric( $_GET[ $urlholder ] ) ) {
+		} elseif ( is_numeric( $_GET[ $urlholder ] ) && ( $_GET[ $urlholder ] > 0 )) {
 			// Numeric Package = previously uploaded file, see above.
 			$this->id   = (int) $_GET[ $urlholder ];
 			$attachment = get_post( $this->id );
